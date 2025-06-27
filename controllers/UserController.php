@@ -22,7 +22,20 @@ class UserController
 
     public function checkCreate(): void
     {
-        
+          $email = $_POST['email'] ?? '';
+    $firstName = $_POST['first_name'] ?? '';
+    $lastName = $_POST['last_name'] ?? '';
+
+   
+    $user = new User(null, $email, $firstName, $lastName);
+
+    
+    $manager = new UserManager();
+    $manager->insert($user);
+
+    
+    header('Location: index.php?route=show_user');
+    
      
     }
 
